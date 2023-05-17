@@ -15,9 +15,16 @@
 void verificarVic(void);
 void imprimeTabuleiro(void);
 void selecionarPeca(void);
+void antiLoop(void);
 char tabuleiro[7][7];
 int numI, i, j, scanVar, pecaX, pecaY, destinoX, destinoY, comeX, comeY;
 
+void antiLoop(){
+  if(scanVar == 0){
+    printf("Erro: caractere não numérico detectado.\n");
+    exit(0);
+  }
+}
 void imprimeTabuleiro() {
 
   printf("    1   2   3   4   5   6   7 \n");
@@ -37,8 +44,10 @@ void imprimeTabuleiro() {
     pecaY = 0;
     printf("Escolha a linha da peça: ");
     scanVar = scanf("%i", &pecaX);
+    antiLoop();
     printf("Escolha a coluna da peça: ");
     scanVar = scanf("%i", &pecaY);
+    antiLoop();
     --pecaX;
     --pecaY;
     // tabuleiro[linhaX][colunaY]
@@ -53,8 +62,10 @@ void imprimeTabuleiro() {
       destinoY = 0;
       printf("Escolha a linha de destino: ");
       scanVar = scanf("%i", &destinoX);
+      antiLoop();
       printf("Escolha a coluna de destino: ");
       scanVar = scanf("%i", &destinoY);
+      antiLoop();
       --destinoX;
       --destinoY;
 
